@@ -2,7 +2,7 @@ from solar_objects import Star, Planet
 
 
 def read_space_objects_data_from_file(input_filename):
-	
+
     """Cчитывает данные о космических объектах из файла, создаёт сами объекты
     и вызывает создание их графических образов
     Параметры:
@@ -12,19 +12,19 @@ def read_space_objects_data_from_file(input_filename):
     objects = []
     with open(input_filename) as input_file:
         for line in input_file:
-            if len(line.strip()) == 0 or line[0] == '#':
+            if not line.strip() or line[0] == '#':
                 continue  # пустые строки и строки-комментарии пропускаем
             object_type = line.split()[0].lower()
             if object_type == "star":  # FIXME: do the same for planet
                 star = Star()
                 parse_star_parameters(line, star)
                 objects.append(star)
-                
+
             elif object_type == "planet":
                 planet = Planet()
-                parse_star_parameters(line, star)
+                parse_planet_parameters(line, planet)
                 objects.append(planet)
-            	
+
             else:
                 print("Unknown space object")
 
@@ -32,7 +32,7 @@ def read_space_objects_data_from_file(input_filename):
 
 
 def parse_star_parameters(line, star):
-	
+
     star.R     = float(line.split()[1])
     star.color =     line.split()[2]
     star.m     = float(line.split()[3])
@@ -55,7 +55,7 @@ def parse_star_parameters(line, star):
     pass  # FIXME: not done yet
 
 def parse_planet_parameters(line, planet):
-    
+
     planet.R     = float(line.split()[1])
     planet.color =     line.split()[2]
     planet.m     = float(line.split()[3])
@@ -63,7 +63,7 @@ def parse_planet_parameters(line, planet):
     planet.y     = float(line.split()[5])
     planet.Vx    = float(line.split()[6])
     planet.Vy    = float(line.split()[7])
-    
+
     """Считывает данные о планете из строки.
     Предполагается такая строка:
     Входная строка должна иметь слеюущий формат:
