@@ -40,6 +40,7 @@ def parse_star_parameters(line, star):
     star.y     = float(line.split()[5])
     star.Vx    = float(line.split()[6])
     star.Vy    = float(line.split()[6])
+    print(float(line.split()[1]))
     """Считывает данные о звезде из строки.
     Входная строка должна иметь слеюущий формат:
     Star <радиус в пикселах> <цвет> <масса> <x> <y> <Vx> <Vy>
