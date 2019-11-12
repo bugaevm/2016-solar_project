@@ -1,5 +1,6 @@
 # coding: utf-8
 # license: GPLv3
+import math
 
 gravitational_constant = 6.67408E-11
 """Гравитационная постоянная Ньютона G"""
@@ -24,7 +25,6 @@ def calculate_force(body, space_objects):
         body.Fx += F * (obj.x - body.x) / r
         body.Fy += F * (obj.y - body.y) / r
 
-
 def move_space_object(body, dt):
     """Перемещает тело в соответствии с действующей на него силой.
 
@@ -32,6 +32,7 @@ def move_space_object(body, dt):
 
     **body** — тело, которое нужно переместить.
     """
+
 
     ax = body.Fx / body.m
     body.x += body.Vx * dt + ax * (dt ** 2) / 2
