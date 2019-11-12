@@ -5,6 +5,7 @@ from solar_objects import Star, Planet
 
 
 def read_space_objects_data_from_file(input_filename):
+	
     """Cчитывает данные о космических объектах из файла, создаёт сами объекты
     и вызывает создание их графических образов
 
@@ -23,6 +24,12 @@ def read_space_objects_data_from_file(input_filename):
                 star = Star()
                 parse_star_parameters(line, star)
                 objects.append(star)
+                
+            elif object_type == "planet":
+                planet = Planet()
+                parse_star_parameters(line, star)
+                objects.append(planet)
+            	
             else:
                 print("Unknown space object")
 
@@ -30,6 +37,7 @@ def read_space_objects_data_from_file(input_filename):
 
 
 def parse_star_parameters(line, star):
+	line.split()[]
     """Считывает данные о звезде из строки.
     Входная строка должна иметь слеюущий формат:
     Star <радиус в пикселах> <цвет> <масса> <x> <y> <Vx> <Vy>
